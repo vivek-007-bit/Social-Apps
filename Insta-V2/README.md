@@ -1,4 +1,5 @@
-# Instagram Clone - Serverless Foundation
+# InstaV2 
+#Live Link: https://insta-v2-opal.vercel.app/
 
 > **Note**: This repository contains the foundational serverless architecture for an Instagram-like full-stack web application. It establishes the unified Flask + FastAPI serverless runtime, MongoDB Atlas connection pooling, and extensible project structure. Full Instagram features (authentication, post creation, feeds, media uploads) and the custom recommendation engine will be integrated step-by-step in future phases.
 
@@ -207,44 +208,3 @@ Open your browser and navigate to:
 | `GET` | `/api/docs` | FastAPI | Interactive OpenAPI/Swagger documentation |
 
 ---
-
-## 9. Vercel Deployment
-
-### Configuration (`vercel.json`)
-The application routes all requests to `api/index.py` using the rewrite configuration:
-```json
-{
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/index.py"
-    }
-  ]
-}
-```
-
-### Deploying via Vercel CLI
-1. Install Vercel CLI (if not already installed):
-   ```bash
-   npm install -g vercel
-   ```
-2. Login and deploy:
-   ```bash
-   vercel
-   ```
-3. Set Environment Variables in the Vercel Dashboard (or via CLI):
-   - `MONGODB_URI`
-   - `MONGODB_DATABASE`
-   - `SECRET_KEY`
-
----
-
-## 10. Roadmap / Future Phases
-
-- [ ] **Phase 2**: User Authentication (Signup, Login, Sessions/JWT)
-- [ ] **Phase 3**: User Profiles & Follow Graph
-- [ ] **Phase 4**: Post Creation & Cloud Media Uploads
-- [ ] **Phase 5**: Likes, Comments, & Activity Notifications
-- [ ] **Phase 6**: Direct Messaging & Stories
-- [ ] **Phase 7**: Custom Recommendation System Integration
