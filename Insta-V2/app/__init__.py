@@ -1,18 +1,21 @@
 import os
+from pathlib import Path
 from flask import Flask
 from app.database.mongodb import SECRET_KEY
 from app.routes.web import web_bp
+
+BASE_DIR = Path(__file__).resolve().parent
 
 
 def create_app() -> Flask:
     """
     Application factory for the Flask web application.
-    Configures templates, static files, and blueprints.
+    Configures templates, static files, and blueprints with absolute paths.
     """
     app = Flask(
         __name__,
-        template_folder="templates",
-        static_folder="static",
+        template_folder=str(BASE_DIR / "templates"),
+        static_folder=str(BASE_DIR / "static"),
     )
 
     app.config["SECRET_KEY"] = SECRET_KEY

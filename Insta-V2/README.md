@@ -1,4 +1,4 @@
-# Insta-V2
+# Instagram Clone - Serverless Foundation
 
 > **Note**: This repository contains the foundational serverless architecture for an Instagram-like full-stack web application. It establishes the unified Flask + FastAPI serverless runtime, MongoDB Atlas connection pooling, and extensible project structure. Full Instagram features (authentication, post creation, feeds, media uploads) and the custom recommendation engine will be integrated step-by-step in future phases.
 
