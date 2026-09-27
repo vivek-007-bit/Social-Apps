@@ -1,4 +1,4 @@
-// Client-side scripts for Instagram Clone foundation
+// Client-side scripts for InstaV2 foundation
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Insta-V2 serverless foundation initialized.");
+    console.log("InstaV2 serverless foundation initialized.");
 });
