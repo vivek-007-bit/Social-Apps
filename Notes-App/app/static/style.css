@@ -1,0 +1,894 @@
+:root {
+    --background: #f5f1e8;
+    --surface: #fffdf8;
+    --surface-hover: #f1ede4;
+    --text: #292722;
+    --muted: #7a756b;
+    --border: #ddd7cc;
+    --accent: #292722;
+    --danger: #9f4141;
+    --sidebar-width: 320px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    min-height: 100dvh;
+    background: var(--background);
+    color: var(--text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+.sidebar-header {
+    padding: 22px 20px 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 22px;
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.brand p {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.primary-button,
+.secondary-button,
+.delete-button {
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.1s ease;
+}
+
+.primary-button {
+    border: 1px solid var(--accent);
+    padding: 9px 14px;
+    background: var(--accent);
+    color: #fff;
+}
+
+.primary-button:hover:not(:disabled) {
+    background: #3a3833;
+}
+
+.primary-button:disabled {
+    opacity: 0.4;
+}
+
+.secondary-button {
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--text);
+}
+
+.secondary-button:hover:not(:disabled) {
+    background: var(--surface-hover);
+    border-color: #c8c0b2;
+}
+
+.secondary-button:disabled {
+    opacity: 0.4;
+}
+
+.delete-button {
+    border: 1px solid #dfcaca;
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--danger);
+}
+
+.delete-button:hover:not(:disabled) {
+    background: #f7eded;
+    border-color: #d5b5b5;
+}
+
+.delete-button:disabled {
+    opacity: 0.4;
+}
+
+.new-note-button {
+    width: 100%;
+}
+
+.search-wrapper {
+    padding: 0 16px 14px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    background: var(--background);
+    color: var(--text);
+    font-size: 13px;
+}
+
+.search-input::placeholder {
+    color: #999287;
+}
+
+.search-input:focus {
+    border-color: #bcb5a8;
+    background: #fffdf9;
+}
+
+.notes-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2px 10px 12px;
+}
+
+.note-list-item {
+    width: 100%;
+    display: block;
+    padding: 12px 11px;
+    margin-bottom: 4px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+}
+
+.note-list-item:hover {
+    background: var(--surface-hover);
+}
+
+.note-list-item.active {
+    background: var(--surface-hover);
+    border-color: var(--border);
+}
+
+.note-list-title {
+    overflow: hidden;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-list-preview {
+    overflow: hidden;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-list-date {
+    color: #9a9489;
+    font-size: 10px;
+}
+
+.empty-notes {
+    padding: 32px 18px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.sidebar-footer {
+    padding: 13px 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+}
+
+.editor-header {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-status {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobile-back-button {
+    display: none;
+}
+
+.export-wrapper {
+    position: relative;
+}
+
+.export-menu {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    z-index: 100;
+    width: 180px;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s ease;
+}
+
+.export-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.export-menu button {
+    width: 100%;
+    display: block;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font-size: 12px;
+}
+
+.export-menu button:hover {
+    background: var(--surface-hover);
+}
+
+.editor-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 24px;
+}
+
+.editor-empty h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.editor-empty p {
+    max-width: 340px;
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.note-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 38px 48px 30px;
+}
+
+.note-title {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.7px;
+}
+
+.note-title::placeholder {
+    color: #aaa49a;
+}
+
+.note-meta {
+    margin-top: 9px;
+    margin-bottom: 25px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.note-content {
+    flex: 1;
+    width: 100%;
+    min-height: 300px;
+    resize: none;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.8;
+    font-family: inherit;
+}
+
+.note-content::placeholder {
+    color: #aaa49a;
+}
+
+.note-title[readonly],
+.note-content[readonly] {
+    cursor: default;
+}
+
+.note-title.editing,
+.note-content.editing {
+    background: var(--surface);
+}
+
+.note-title.editing {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.note-content.editing {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 1000;
+    min-width: 180px;
+    max-width: calc(100vw - 32px);
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 20px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast.error {
+    border-color: #d9b4b4;
+}
+
+/* Mobile layout */
+
+@media (max-width: 768px) {
+    .app-shell {
+        flex-direction: column;
+        min-height: 100dvh;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: 38dvh;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header {
+        padding: 14px 15px 12px;
+    }
+
+    .brand {
+        margin-bottom: 14px;
+    }
+
+    .brand-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+    }
+
+    .brand h1 {
+        font-size: 16px;
+    }
+
+    .brand p {
+        font-size: 11px;
+    }
+
+    .new-note-button {
+        height: 38px;
+        font-size: 12px;
+    }
+
+    .search-wrapper {
+        padding: 0 12px 10px;
+    }
+
+    .search-input {
+        height: 38px;
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .notes-list {
+        max-height: 145px;
+        padding: 2px 10px 10px;
+        overflow-y: auto;
+    }
+
+    .note-list-item {
+        padding: 10px;
+        margin-bottom: 3px;
+        border-radius: 8px;
+    }
+
+    .note-list-title {
+        margin-bottom: 3px;
+        font-size: 12px;
+    }
+
+    .note-list-preview {
+        margin-bottom: 5px;
+        font-size: 11px;
+    }
+
+    .note-list-date {
+        font-size: 9px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        flex: 1;
+        min-height: 62dvh;
+    }
+
+    .editor-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        min-height: 58px;
+        padding: 8px 12px;
+        background: var(--background);
+    }
+
+    .editor-status {
+        display: none;
+    }
+
+    .editor-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .editor-actions::-webkit-scrollbar {
+        display: none;
+    }
+
+    .editor-actions .secondary-button,
+    .editor-actions .primary-button,
+    .editor-actions .delete-button {
+        flex: 0 0 auto;
+        min-width: 58px;
+        height: 34px;
+        padding: 7px 10px;
+        font-size: 11px;
+        border-radius: 8px;
+        white-space: nowrap;
+    }
+
+    .export-wrapper {
+        flex: 0 0 auto;
+    }
+
+    .export-menu {
+        top: calc(100% + 6px);
+        right: 0;
+        width: 165px;
+    }
+
+    .editor-empty {
+        min-height: 100%;
+        padding: 40px 22px 50px;
+    }
+
+    .empty-icon {
+        width: 46px;
+        height: 46px;
+        margin-bottom: 16px;
+        border-radius: 11px;
+        font-size: 22px;
+    }
+
+    .editor-empty h2 {
+        margin-bottom: 7px;
+        font-size: 17px;
+    }
+
+    .editor-empty p {
+        max-width: 300px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        line-height: 1.65;
+    }
+
+    .editor-empty .primary-button {
+        min-height: 38px;
+        padding: 9px 15px;
+        font-size: 12px;
+    }
+
+    .note-editor {
+        min-height: 0;
+        padding: 24px 18px 30px;
+    }
+
+    .note-title {
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: -0.4px;
+    }
+
+    .note-meta {
+        margin-top: 7px;
+        margin-bottom: 20px;
+        font-size: 10px;
+    }
+
+    .note-content {
+        min-height: 260px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .note-title.editing {
+        padding: 8px 9px;
+    }
+
+    .note-content.editing {
+        padding: 11px;
+    }
+
+    .toast {
+        bottom: 18px;
+        min-width: 160px;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+
+    /* Mobile notes screen */
+
+    .app-shell:not(.mobile-editor-visible) .main-content {
+        display: none;
+    }
+
+    .app-shell:not(.mobile-editor-visible) .sidebar {
+        width: 100%;
+        max-height: 100dvh;
+        min-height: 100dvh;
+        border-right: 0;
+        border-bottom: 0;
+    }
+
+    .app-shell:not(.mobile-editor-visible) .notes-list {
+        max-height: none;
+        flex: 1;
+    }
+
+    /* Mobile editor screen */
+
+    .app-shell.mobile-editor-visible {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .app-shell.mobile-editor-visible .sidebar {
+        display: none;
+    }
+
+    .app-shell.mobile-editor-visible .main-content {
+        display: flex;
+        width: 100%;
+        min-height: 100dvh;
+    }
+
+    .app-shell.mobile-editor-visible .mobile-back-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        min-width: 70px;
+        height: 34px;
+        padding: 6px 9px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .app-shell.mobile-editor-visible .mobile-back-button:hover {
+        background: var(--surface-hover);
+    }
+
+    .app-shell.mobile-editor-visible .editor-header {
+        justify-content: flex-start;
+        gap: 7px;
+    }
+
+    .app-shell.mobile-editor-visible .editor-actions {
+        flex: 1;
+        width: auto;
+    }
+
+    .app-shell.mobile-editor-visible .note-editor {
+        flex: 1;
+    }
+}
+
+@media (max-width: 430px) {
+    .sidebar {
+        max-height: 36dvh;
+    }
+
+    .sidebar-header {
+        padding: 12px 12px 10px;
+    }
+
+    .brand {
+        gap: 9px;
+        margin-bottom: 12px;
+    }
+
+    .brand-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+    }
+
+    .brand p {
+        font-size: 10px;
+    }
+
+    .new-note-button {
+        height: 36px;
+        font-size: 11px;
+    }
+
+    .search-wrapper {
+        padding: 0 10px 8px;
+    }
+
+    .search-input {
+        height: 36px;
+        font-size: 11px;
+    }
+
+    .notes-list {
+        max-height: 125px;
+    }
+
+    .note-list-item {
+        padding: 9px;
+    }
+
+    .note-list-title {
+        font-size: 11px;
+    }
+
+    .note-list-preview {
+        font-size: 10px;
+    }
+
+    .note-list-date {
+        font-size: 8px;
+    }
+
+    .main-content {
+        min-height: 64dvh;
+    }
+
+    .editor-header {
+        min-height: 54px;
+        padding: 8px 10px;
+    }
+
+    .editor-actions {
+        gap: 5px;
+    }
+
+    .editor-actions .secondary-button,
+    .editor-actions .primary-button,
+    .editor-actions .delete-button {
+        min-width: 55px;
+        height: 32px;
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .export-menu {
+        width: 155px;
+    }
+
+    .editor-empty {
+        padding: 35px 18px 45px;
+    }
+
+    .empty-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 14px;
+    }
+
+    .editor-empty h2 {
+        font-size: 16px;
+    }
+
+    .editor-empty p {
+        max-width: 280px;
+        font-size: 11px;
+    }
+
+    .note-editor {
+        padding: 20px 15px 26px;
+    }
+
+    .note-title {
+        font-size: 22px;
+    }
+
+    .note-content {
+        font-size: 13px;
+    }
+
+    .app-shell.mobile-editor-visible .mobile-back-button {
+        min-width: 64px;
+        height: 32px;
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
